@@ -1,0 +1,147 @@
+<{[]}>
+**VOID BOT HELP**
+```
+There are 6 categories:
+
+  COMMANDS        {prefix}help commands
+  VOID TALK      {prefix}help voidtalk
+  VOID REPLY     {prefix}help voidreply
+  VOID RANDOM    {prefix}help voidrandom
+  PRECEDENCE      {prefix}help precedence
+  EXTRAS          {prefix}help extras
+
+Void is a fork of ShirtBot (github.com/Cyclcrclicly/shirt-bot)
+Support server: non-existent
+```
+<{[/]}>
+
+<{[commands]}>
+**COMMAND HELP**
+```
+ARGUMENT EXPLANATION
+
+<argument>            required argument
+[argument]            optional argument
+[argument=default]    optional argument with a default value
+The order of optional arguments matters.
+
+COMMAND ARGUMENTS
+
+max_size      the maximum size in tokens (word segments)
+randomness    how random the output message will be as a percentage
+chance        how likely the bot is to trigger as a percentage
+text          extra text
+channel       the channel which the command will affect
+
+
+COMMANDS
+
+{prefix}generate [max_size=80] [randomness=45] [text]
+  Generates text.
+  
+{prefix}trigger [max_size=80] [randomness=45] [text]
+  Generates text with the last 15 non-command messages as context.
+
+{prefix}voidtalk
+  In a server    lists void talk channels
+  In a DM        states if void talk is on in the DM channel
+{prefix}voidtalk set [randomness=45] [channel=message channel]
+  Sets up a void talk channel.
+{prefix}voidtalk unset [channel=message channel]
+  Removes a void talk channel.
+
+{prefix}voidreply
+  In a server    lists void reply channels
+  In a DM        states if void reply is on in the DM channel
+{prefix}voidreply set [randomness=45] [channel=message channel]
+  Sets up a void reply channel.
+{prefix}voidreply unset [channel=message channel]
+  Removes a void reply channel.
+
+{prefix}voidrandom
+  In a server    lists void random channels
+  In a DM        states if void random is on in the DM channel
+{prefix}voidrandom set [randomness=45] [chance=5] [channel=message channel]
+  Sets up a void random channel.
+{prefix}voidreply unset [channel=message channel]
+  Removes a void random channel.
+
+{prefix}reset
+  Once the bot encounters this command, it stops collecting further messages as context.
+
+{prefix}echo <text>
+  Repeats text.
+
+{prefix}links
+  In a server    lists all channels with uncensored links
+  In a DM        states if DM channel has (un)censored links
+{prefix}links toggle [channel=message channel]
+  Toggles censoring links in a channel.
+```
+<{[commands/]}>
+
+<{[voidtalk]}>
+**VOID TALK**
+```
+Void talk is a feature of Void Bot which lets it automatically reply to all messages sent in a channel.
+By default, it's off for all channels, but you can set it up using {prefix}voidtalk set... (more info in {prefix}help commands).
+The extras ({prefix}help extras) that work in void talk channels are '#', '# ', and '$ '.
+Void talk also works in DMs.
+```
+<{[voidtalk/]}>
+
+<{[voidreply]}>
+**VOID REPLY**
+```
+Void reply is a feature of Void Bot which lets it trigger when you reply to one of the bot's messages.
+By default, it's off for all channels, but you can set it up using {prefix}voidreply set... (more info in {prefix}help commands)
+The extras ({prefix}help extras) which work in void reply channels are '#' and '$ '.
+Void reply also works in DMs.
+```
+<{[voidreply/]}>
+
+<{[voidrandom]}>
+**VOID RANDOM**
+```
+Void random is a feature of Void Bot which lets it trigger randomly (customizable chance) whenever a message is sent in a channel where it's on.
+By default, it's off for all channels, but you can set it up using {prefix}voidrandom set... (more info in {prefix}help commands)
+Extras ({prefix}help extras) don't work here.
+Void random also works in DMs.
+```
+<{[voidrandom/]}>
+
+<{[precedence]}>
+**PRECEDENCE**
+```
+Precedence is a way to organize the bot's features into a hierarchy. If a feature is on/triggered, it prevents some other features from triggering.
+The precedence is:
+
+  Commands ({prefix}help commands)
+    if your message is a command, it prevents everything below from triggering
+
+  Void talk ({prefix}help voidtalk)
+    if your message is in a void talk channel, it prevents everything below from triggering
+    if none of the above features are on/triggered, void talk can trigger
+
+  Void reply ({prefix}help voidreply)
+    if your message replies to void bot in a void reply channel, it prevents everything below from triggering
+    if none of the above features are on/triggered, void reply can trigger
+
+  Void random ({prefix}help voidrandom)
+    if none of the above features are on/triggered, void random can trigger
+```
+<{[precedence/]}>
+
+<{[extras]}>
+**EXTRAS**
+```
+Extras are extra features of Void Bot which work in void talk ({prefix}help voidtalk) and void reply ({prefix}help voidreply). The helps for those list exactly which extras work.
+Extras are:
+
+  '#'     if your message only contains '#', Void Bot will try to delete the message (unless in a DM) and trigger. This allows you to trigger the bot multiple times without having to type any new messages in between.
+
+  '# '    if your message starts with '# ', Void Bot will ignore the message (i.e. won't trigger), but will actually collect the message once an actual trigger occurs. This allows you to type multiple messages before triggering the bot if you wish to do that.
+
+  '$ '    if your message starts with '$ ', it will force Void Bot to start its next message with the content of your message. This way, you can force Void Bot to say something it otherwise may not have said.
+```
+<{[extras/]}>
