@@ -1,7 +1,7 @@
 import asyncio
 import contextlib2
 import random
-import sys
+import sus
 import traceback
 import typing
 
